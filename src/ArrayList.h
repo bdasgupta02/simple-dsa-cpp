@@ -59,7 +59,20 @@ namespace SimpleDSA
   {
     if (index >= elementSize)
       throw invalid_argument("Index exceeds list size");
+
     return arr[index];
+  }
+
+  template <typename T>
+  T ArrayList<T>::remove(int index)
+  {
+    if (index >= elementSize)
+      throw invalid_argument("Index exceeds list size");
+
+    T atIdx = arr[index];
+    copy(arr + index, arr + elementSize, arr + index - 1);
+    --elementSize;
+    return atIdx;
   }
 
   template <typename T>
