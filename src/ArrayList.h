@@ -107,6 +107,16 @@ namespace SimpleDSA
   }
 
   template <typename T>
+  bool ArrayList<T>::valuesEquals(ArrayList<T> &other)
+  {
+    if (elementSize != other.elementSize) return false;
+    for (int i = 0; i < elementSize; ++i) {
+      if (arr[i] != other.arr[i]) return false;
+    }
+    return true;
+  }
+
+  template <typename T>
   bool ArrayList<T>::isEmpty()
   {
     return elementSize == 0;
@@ -124,7 +134,3 @@ namespace SimpleDSA
 }
 
 #endif
-
-// index of returns -1 if not found\
-// Need new constructor with bracket array
-// Fix get() null pointer issue if index exceeds e size
