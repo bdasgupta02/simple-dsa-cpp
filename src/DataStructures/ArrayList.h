@@ -2,9 +2,9 @@
 #define ArrayList_H
 #include <stdexcept>
 #include <algorithm>
-#include <iostream>
 #define invalid_argument std::invalid_argument
 #define copy std::copy
+#define STEP 50
 
 namespace SimpleDSA
 {
@@ -12,18 +12,17 @@ namespace SimpleDSA
   class ArrayList
   {
   private:
-    static const int step = 10;
     int arraySize;
     int elementSize;
     T *arr;
 
     void extend()
     {
-      T *temp = new T[arraySize + step];
+      T *temp = new T[arraySize + STEP];
       copy(arr, arr + arraySize, temp);
       delete[] arr;
       arr = temp;
-      arraySize += step;
+      arraySize += STEP;
     }
 
   public:
@@ -42,9 +41,9 @@ namespace SimpleDSA
   template <typename T>
   ArrayList<T>::ArrayList()
   {
-    arraySize = 10;
+    arraySize = STEP;
     elementSize = 0;
-    arr = new T[step];
+    arr = new T[STEP];
   }
 
   template <typename T>
@@ -109,9 +108,12 @@ namespace SimpleDSA
   template <typename T>
   bool ArrayList<T>::valuesEquals(ArrayList<T> &other)
   {
-    if (elementSize != other.elementSize) return false;
-    for (int i = 0; i < elementSize; ++i) {
-      if (arr[i] != other.arr[i]) return false;
+    if (elementSize != other.elementSize)
+      return false;
+    for (int i = 0; i < elementSize; ++i)
+    {
+      if (arr[i] != other.arr[i])
+        return false;
     }
     return true;
   }
@@ -127,7 +129,8 @@ namespace SimpleDSA
   {
     for (int i = 0; i < size(); ++i)
     {
-      if (arr[i] == element) return i;
+      if (arr[i] == element)
+        return i;
     }
     return -1;
   }
