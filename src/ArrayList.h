@@ -31,13 +31,12 @@ namespace SimpleDSA
     int size();
     T get(int index);
     T remove(int index);
-    T *getArr();
     void clear();
-    void add(T element);
-    void addAll(ArrayList<T> other);
-    bool equals(ArrayList<T> other);
+    void add(T &element);
+    void addAll(ArrayList<T> &other);
+    bool valuesEquals(ArrayList<T> &other);
     bool isEmpty();
-    int indexOf(T element);
+    int indexOf(T &element);
   };
 
   template <typename T>
@@ -76,7 +75,13 @@ namespace SimpleDSA
   }
 
   template <typename T>
-  void ArrayList<T>::add(T element)
+  void ArrayList<T>::clear()
+  {
+    elementSize = 0;
+  }
+
+  template <typename T>
+  void ArrayList<T>::add(T &element)
   {
     if (elementSize < arraySize)
     {
@@ -84,16 +89,37 @@ namespace SimpleDSA
     }
     else
     {
-      this->extend();
+      extend();
       arr[elementSize] = element;
     }
     ++elementSize;
   }
 
   template <typename T>
-  T *ArrayList<T>::getArr()
+  void ArrayList<T>::addAll(ArrayList<T> &other)
   {
-    return arr;
+    int arrSize = other.size();
+    for (int i = 0; i < arrSize; ++i)
+    {
+      int val = other.get(i);
+      add(val);
+    }
+  }
+
+  template <typename T>
+  bool ArrayList<T>::isEmpty()
+  {
+    return elementSize == 0;
+  }
+
+  template <typename T>
+  int ArrayList<T>::indexOf(T &element)
+  {
+    for (int i = 0; i < size(); ++i)
+    {
+      if (arr[i] == element) return i;
+    }
+    return -1;
   }
 }
 
