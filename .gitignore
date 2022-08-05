@@ -38,3 +38,6 @@ main.cpp
 
 # VSCode
 .vscode/
+
+# Mac
+.DS_Store
