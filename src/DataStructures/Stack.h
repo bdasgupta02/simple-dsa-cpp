@@ -8,12 +8,11 @@
 namespace SimpleDSA
 {
   template <typename T>
-  class Queue
+  class Stack
   {
   private:
     int arraySize;
-    int front;
-    int back;
+    int elementSize;
     T *arr;
 
     void extend()
@@ -26,64 +25,63 @@ namespace SimpleDSA
     }
 
   public:
-    Queue();
-    void enqueue(T &element);
-    T dequeue();
+    Stack();
+    void push(T &element);
     T &peek();
+    T pop();
     bool isEmpty();
     int size();
   };
 
   template <typename T>
-  Queue<T>::Queue()
+  Stack<T>::Stack()
   {
     arraySize = STEP;
-    front = 0;
-    back = 0;
+    elementSize = 0;
     arr = new T[STEP];
   }
 
   template <typename T>
-  void Queue<T>::enqueue(T &element)
+  void Stack<T>::push(T &element)
   {
-    if (back < arraySize)
+    if (elementSize < arraySize)
     {
-      arr[back] = element;
+      arr[elementSize] = element;
     }
     else
     {
       extend();
-      arr[back] = element;
+      arr[elementSize] = element;
     }
-    ++back;
+    ++elementSize;
   }
 
   template <typename T>
-  T Queue<T>::dequeue() {
+  T &Stack<T>::peek()
+  {
+    return arr[elementSize - 1];
+  }
+
+  template <typename T>
+  T Stack<T>::pop()
+  {
     if (isEmpty())
-      throw invalid_argument("Queue is empty");
-    
-    T val = arr[front];
-    ++front;
-    return val;
+      throw invalid_argument("Stack is empty");
+
+    --elementSize;
+    return arr[elementSize];
   }
 
   template <typename T>
-  T &Queue<T>::peek()
+  bool Stack<T>::isEmpty()
   {
-    return arr[front];
+    return elementSize < 1;
   }
 
   template <typename T>
-  bool Queue<T>::isEmpty()
+  int Stack<T>::size()
   {
-    return back == 0 || back - front == 0;
-  }
-
-  template <typename T>
-  int Queue<T>::size()
-  {
-    return back - front;
+    return elementSize;
   }
 }
 
