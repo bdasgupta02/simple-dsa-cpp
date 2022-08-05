@@ -35,3 +35,6 @@
 main
 main*/
 main.cpp
+
+# VSCode
+.vscode/
