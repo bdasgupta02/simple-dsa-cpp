@@ -5,7 +5,7 @@
 #include "ArrayList.h"
 #define invalid_argument std::invalid_argument
 
-#define SIZE 50
+#define SIZE 500
 
 namespace SimpleDSA
 {
