@@ -12,4 +12,4 @@ Nothing yet
 
 ### Planned
 - Erase window function for array list
-- Linked List, BST, Fenwick, Trie, Graph w/ common algos
+- Hash Set, Hash Map, Linked List, BST, Fenwick, Trie, Graph w/ common algos
