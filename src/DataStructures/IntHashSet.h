@@ -33,7 +33,6 @@ namespace SimpleDSA
     elementCount = 0;
   }
 
-  // change to contains check for second condition
   bool IntHashSet::add(SinglyLinkedNode<int> &element)
   {
     int hashidx = getHash(element.val);
