@@ -27,6 +27,7 @@ namespace SimpleDSA
 
   public:
     ArrayList();
+    ArrayList(int initialSize);
     int size();
     T get(int index);
     T remove(int index);
@@ -36,6 +37,8 @@ namespace SimpleDSA
     bool valuesEquals(ArrayList<T> &other);
     bool isEmpty();
     int indexOf(T &element);
+    T& operator [] (unsigned int i);
+    void set(unsigned int i, T &element);
   };
 
   template <typename T>
@@ -44,6 +47,14 @@ namespace SimpleDSA
     arraySize = STEP;
     elementSize = 0;
     arr = new T[STEP];
+  }
+
+  template <typename T>
+  ArrayList<T>::ArrayList(int initialSize)
+  {
+    arraySize = initialSize;
+    elementSize = 0;
+    arr = new T[initialSize];
   }
 
   template <typename T>
@@ -133,6 +144,18 @@ namespace SimpleDSA
         return i;
     }
     return -1;
+  }
+
+  template <typename T>
+  T& ArrayList<T>::operator [] (unsigned int i)
+  {
+    return arr[i];
+  }
+
+  template <typename T>
+  void ArrayList<T>::set(unsigned int i, T &element)
+  {
+    arr[i] = element;
   }
 }
 

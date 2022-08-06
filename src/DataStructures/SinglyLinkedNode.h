@@ -1,5 +1,6 @@
 #ifndef SinglyLinkedlist_H
 #define SinglyLinkedlist_H
+#include <limits.h>
 
 namespace SimpleDSA
 {
@@ -7,7 +8,19 @@ namespace SimpleDSA
   struct SinglyLinkedNode
   {
     T val;
-    SinglyLinkedNode<T> next;
+    SinglyLinkedNode *next;
+
+    SinglyLinkedNode()
+    {
+      val = INT_MAX;
+      next = nullptr;
+    }
+
+    SinglyLinkedNode(T &x)
+    {
+      val = x;
+      next = nullptr;
+    }
   };
 }
 

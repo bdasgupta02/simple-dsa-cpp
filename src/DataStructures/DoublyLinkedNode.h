@@ -7,8 +7,15 @@ namespace SimpleDSA
   struct DoublyLinkedNode
   {
     T val;
-    DoublyLinkedNode<T> next;
-    DoublyLinkedNode<T> previous;
+    DoublyLinkedNode<T> *next;
+    DoublyLinkedNode<T> *previous;
+
+    DoublyLinkedNode(T &x)
+    {
+      val = x;
+      next = nullptr;
+      previous = nullptr;
+    }
   };
 }
 
