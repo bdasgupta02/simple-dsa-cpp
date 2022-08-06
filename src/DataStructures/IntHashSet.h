@@ -1,5 +1,5 @@
-#ifndef HashSet_H
-#define HashSet_H
+#ifndef IntHashSet_H
+#define IntHashSet_H
 #include <stdexcept>
 #include "SinglyLinkedNode.h"
 #include "ArrayList.h"
