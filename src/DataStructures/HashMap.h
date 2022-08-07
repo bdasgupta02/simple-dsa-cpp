@@ -27,6 +27,7 @@ namespace SimpleDSA
     bool contains(K &key);
     HashPair<K, V> remove(HashPair<K, V> &pair);
     HashPair<K, V> remove(K &key);
+    V &getValue(K &key);
   };
 
   template <typename K, typename V>
@@ -168,6 +169,22 @@ namespace SimpleDSA
     }
 
     throw invalid_argument("Cannot find item for removal in HashMap");
+  }
+
+  template <typename K, typename V>
+  V &HashMap<K, V>::getValue(K &key)
+  {
+    unsigned int hashidx = getHashFromKey(key);
+    HashPair<K, V> *cache = &array[hashidx];
+
+    while (cache->next != nullptr)
+    {
+      cache = cache->next;
+      if (cache->key() == key)
+        return cache->value();
+    }
+
+    throw invalid_argument("Cannot find value based on key in HashMap");
   }
 }
 
