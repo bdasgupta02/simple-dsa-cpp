@@ -7,7 +7,7 @@
 #define entry std::pair
 #define create_entry std::make_pair
 
-#define STEP_SIZE_PAIR 500;
+const int STEP_SIZE_PAIR = 500;
 
 // Hashed singly linked node for HashMaps
 namespace SimpleDSA
@@ -21,15 +21,24 @@ namespace SimpleDSA
 
     unsigned int createHash(K &key)
     {
-      return hash<K>{}(key) % STEP_SIZE_PAIR;
+      return hash<K>{}(key) % size;
     }
 
   public:
     HashPair *next;
+    int size;
 
     HashPair() { next = nullptr; }
     HashPair(K &k, V &v)
     {
+      size = STEP_SIZE_PAIR;
+      val = create_entry(k, v);
+      hashint = createHash(k);
+      next = nullptr;
+    }
+    HashPair(K &k, V &v, int customSize)
+    {
+      size = customSize;
       val = create_entry(k, v);
       hashint = createHash(k);
       next = nullptr;

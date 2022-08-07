@@ -19,6 +19,7 @@ namespace SimpleDSA
     int elementCount;
     ArrayList<HashPair<K, V>> array;
     unsigned int getHashFromKey(K &key);
+    int arrSize;
 
   public:
     HashMap();
@@ -36,6 +37,7 @@ namespace SimpleDSA
   template <typename K, typename V>
   HashMap<K, V>::HashMap()
   {
+    arrSize = STEP_SIZE_MAP;
     elementCount = 0;
     array = ArrayList<HashPair<K, V>>(STEP_SIZE_MAP);
   }
@@ -43,6 +45,7 @@ namespace SimpleDSA
   template <typename K, typename V>
   HashMap<K, V>::HashMap(int size)
   {
+    arrSize = size;
     elementCount = 0;
     array = ArrayList<HashPair<K, V>>(size);
   }
@@ -50,12 +53,15 @@ namespace SimpleDSA
   template <typename K, typename V>
   unsigned int HashMap<K, V>::getHashFromKey(K &key)
   {
-    return hash<K>{}(key) % STEP_SIZE_MAP;
+    return hash<K>{}(key) % arrSize;
   }
 
   template <typename K, typename V>
   bool HashMap<K, V>::add(HashPair<K, V> &pair)
   {
+    if (pair.size != arrSize)
+      throw invalid_argument("Cannot insert HashPair with mismatched size");
+
     unsigned int hashidx = pair.getHash();
 
     if (array[hashidx].next == nullptr)
