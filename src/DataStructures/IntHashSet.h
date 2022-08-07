@@ -18,6 +18,7 @@ namespace SimpleDSA
 
   public:
     IntHashSet();
+    bool isEmpty();
     bool add(SinglyLinkedNode<int> &element);
     bool contains(int &value);
     int remove(int &value);
@@ -33,6 +34,11 @@ namespace SimpleDSA
     elementCount = 0;
   }
 
+  bool IntHashSet::isEmpty()
+  {
+    return elementCount == 0;
+  }
+
   bool IntHashSet::add(SinglyLinkedNode<int> &element)
   {
     int hashidx = getHash(element.val);
@@ -41,6 +47,7 @@ namespace SimpleDSA
     {
       array[hashidx].next = &element;
       if (array[hashidx].next->val == element.val)
+        ++elementCount;
         return true;
     }
     else
@@ -57,6 +64,7 @@ namespace SimpleDSA
       cache->next = &element;
 
       if (cache->next->val == element.val)
+        ++elementCount;
         return true;
     }
 
@@ -98,6 +106,7 @@ namespace SimpleDSA
         {
           prev->next = nullptr;
         }
+        --elementCount;
         return value;
       }
     }
