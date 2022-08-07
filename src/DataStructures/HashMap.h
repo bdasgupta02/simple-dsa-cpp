@@ -22,6 +22,7 @@ namespace SimpleDSA
 
   public:
     HashMap();
+    HashMap(int size);
     bool add(HashPair<K, V> &pair);
     bool contains(HashPair<K, V> &pair);
     bool contains(K &key);
@@ -37,6 +38,13 @@ namespace SimpleDSA
   {
     elementCount = 0;
     array = ArrayList<HashPair<K, V>>(STEP_SIZE_MAP);
+  }
+
+  template <typename K, typename V>
+  HashMap<K, V>::HashMap(int size)
+  {
+    elementCount = 0;
+    array = ArrayList<HashPair<K, V>>(size);
   }
 
   template <typename K, typename V>
