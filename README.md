@@ -7,6 +7,7 @@ A simple library for data structures and algorithms, written in C++.
 - Queue (FIFO, with 2 pointer implementation for speed at expense of memory and O(1) dequeue)
 - Stack
 - Int Hash Set
+- Hash Map (any hashable data type for key)
 
 ### Supported algorithms
 Nothing yet

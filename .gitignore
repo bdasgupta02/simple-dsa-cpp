@@ -39,5 +39,6 @@ main.cpp
 # VSCode
 .vscode/
 
-# Mac
+# Misc and Mac related
 .DS_Store
+tempCodeRunnerFile.cpp

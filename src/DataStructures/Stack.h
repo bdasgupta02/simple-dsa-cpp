@@ -3,7 +3,7 @@
 #include <stdexcept>
 #define invalid_argument std::invalid_argument
 
-#define STEP 50
+#define STEP_STACK 50
 
 namespace SimpleDSA
 {
@@ -17,11 +17,11 @@ namespace SimpleDSA
 
     void extend()
     {
-      T *temp = new T[arraySize + STEP];
+      T *temp = new T[arraySize + STEP_STACK];
       copy(arr, arr + arraySize, temp);
       delete[] arr;
       arr = temp;
-      arraySize += STEP;
+      arraySize += STEP_STACK;
     }
 
   public:
@@ -36,9 +36,9 @@ namespace SimpleDSA
   template <typename T>
   Stack<T>::Stack()
   {
-    arraySize = STEP;
+    arraySize = STEP_STACK;
     elementSize = 0;
-    arr = new T[STEP];
+    arr = new T[STEP_STACK];
   }
 
   template <typename T>

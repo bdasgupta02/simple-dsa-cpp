@@ -5,7 +5,7 @@
 #include "ArrayList.h"
 #define invalid_argument std::invalid_argument
 
-#define SIZE 500
+#define STEP_SIZE_SET 500
 
 namespace SimpleDSA
 {
@@ -32,6 +32,7 @@ namespace SimpleDSA
   IntHashSet::IntHashSet()
   {
     elementCount = 0;
+    array = ArrayList<SinglyLinkedNode<int>>(STEP_SIZE_SET);
   }
 
   bool IntHashSet::isEmpty()
@@ -42,13 +43,15 @@ namespace SimpleDSA
   bool IntHashSet::add(SinglyLinkedNode<int> &element)
   {
     int hashidx = getHash(element.val);
-    
+
     if (array[hashidx].next == nullptr)
     {
       array[hashidx].next = &element;
       if (array[hashidx].next->val == element.val)
+      {
         ++elementCount;
         return true;
+      }
     }
     else
     {
@@ -58,14 +61,16 @@ namespace SimpleDSA
         cache = cache->next;
         if (cache->val == element.val)
         {
-          throw invalid_argument("Cannot insert duplicate element.val into IntHashSet");
+          throw invalid_argument("Cannot insert duplicate value into IntHashSet");
         }
       }
       cache->next = &element;
 
       if (cache->next->val == element.val)
+      {
         ++elementCount;
         return true;
+      }
     }
 
     return false;
@@ -82,7 +87,7 @@ namespace SimpleDSA
       if (cache->val == value)
         return true;
     }
-    
+
     return false;
   }
 

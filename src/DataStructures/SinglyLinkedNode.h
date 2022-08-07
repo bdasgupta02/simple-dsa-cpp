@@ -12,7 +12,6 @@ namespace SimpleDSA
 
     SinglyLinkedNode()
     {
-      val = INT_MAX;
       next = nullptr;
     }
 

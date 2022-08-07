@@ -3,7 +3,7 @@
 #include <stdexcept>
 #define invalid_argument std::invalid_argument
 
-#define STEP 50
+#define STEP_QUEUE 50
 
 namespace SimpleDSA
 {
@@ -18,11 +18,11 @@ namespace SimpleDSA
 
     void extend()
     {
-      T *temp = new T[arraySize + STEP];
+      T *temp = new T[arraySize + STEP_QUEUE];
       copy(arr, arr + arraySize, temp);
       delete[] arr;
       arr = temp;
-      arraySize += STEP;
+      arraySize += STEP_QUEUE;
     }
 
   public:
@@ -37,10 +37,10 @@ namespace SimpleDSA
   template <typename T>
   Queue<T>::Queue()
   {
-    arraySize = STEP;
+    arraySize = STEP_QUEUE;
     front = 0;
     back = 0;
-    arr = new T[STEP];
+    arr = new T[STEP_QUEUE];
   }
 
   template <typename T>
