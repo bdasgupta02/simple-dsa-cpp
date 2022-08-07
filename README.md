@@ -8,7 +8,7 @@ A simple library for data structures and algorithms, written in C++.
 - Stack
 - Int Hash Set
 - Hash Pair (pair data structured used for the hash map)
-- Hash Map (any hashable data type for key)
+- Hash Map (any hashable data type for key), with retrievals at O(1) for best and average, O(n) for worst
 
 ### Supported algorithms
 Nothing yet
