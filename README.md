@@ -15,7 +15,7 @@ Nothing yet
 
 ### Planned
 - Erase window function for array list
--  Linked List, BST, Fenwick, Trie, Graph w/ common algos
+- BST, Fenwick, Trie, Graph w/ common algos
 
 ### Notes
 - Implementation of member functions are in header files due to (1) generic types, and (2) issue with VSCode
