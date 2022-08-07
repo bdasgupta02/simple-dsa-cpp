@@ -4,7 +4,8 @@
 #include <algorithm>
 #define invalid_argument std::invalid_argument
 #define copy std::copy
-#define STEP 50
+
+const int LIST_STEP = 50;
 
 namespace SimpleDSA
 {
@@ -18,11 +19,11 @@ namespace SimpleDSA
 
     void extend()
     {
-      T *temp = new T[arraySize + STEP];
+      T *temp = new T[arraySize + LIST_STEP];
       copy(arr, arr + arraySize, temp);
       delete[] arr;
       arr = temp;
-      arraySize += STEP;
+      arraySize += LIST_STEP;
     }
 
   public:
@@ -44,9 +45,9 @@ namespace SimpleDSA
   template <typename T>
   ArrayList<T>::ArrayList()
   {
-    arraySize = STEP;
+    arraySize = LIST_STEP;
     elementSize = 0;
-    arr = new T[STEP];
+    arr = new T[LIST_STEP];
   }
 
   template <typename T>

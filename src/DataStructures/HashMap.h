@@ -8,7 +8,7 @@
 #define invalid_argument std::invalid_argument
 #define hash std::hash
 
-#define STEP_SIZE_MAP 500;
+const int STEP_SIZE_MAP = 500;
 
 namespace SimpleDSA
 {
@@ -33,7 +33,7 @@ namespace SimpleDSA
   HashMap<K, V>::HashMap()
   {
     elementCount = 0;
-    array = ArrayList<HashPair<K, V>>(500);
+    array = ArrayList<HashPair<K, V>>(STEP_SIZE_MAP);
   }
 
   template <typename K, typename V>

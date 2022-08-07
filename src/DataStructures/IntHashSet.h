@@ -5,7 +5,7 @@
 #include "ArrayList.h"
 #define invalid_argument std::invalid_argument
 
-#define STEP_SIZE_SET 500
+const int STEP_SIZE_SET = 500;
 
 namespace SimpleDSA
 {

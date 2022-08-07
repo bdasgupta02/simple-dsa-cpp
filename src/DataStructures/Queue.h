@@ -3,7 +3,7 @@
 #include <stdexcept>
 #define invalid_argument std::invalid_argument
 
-#define STEP_QUEUE 50
+const int STEP_QUEUE = 50;
 
 namespace SimpleDSA
 {

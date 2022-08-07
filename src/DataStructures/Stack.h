@@ -3,7 +3,7 @@
 #include <stdexcept>
 #define invalid_argument std::invalid_argument
 
-#define STEP_STACK 50
+const int STEP_STACK = 50;
 
 namespace SimpleDSA
 {
