@@ -28,6 +28,8 @@ namespace SimpleDSA
     HashPair<K, V> remove(HashPair<K, V> &pair);
     HashPair<K, V> remove(K &key);
     V &getValue(K &key);
+    int size();
+    bool isEmpty();
   };
 
   template <typename K, typename V>
@@ -186,6 +188,12 @@ namespace SimpleDSA
 
     throw invalid_argument("Cannot find value based on key in HashMap");
   }
+
+  template <typename K, typename V>
+  int HashMap<K, V>::size() { return elementCount; }
+
+  template <typename K, typename V>
+  bool HashMap<K, V>::isEmpty() { return elementCount == 0; }
 }
 
 #endif
