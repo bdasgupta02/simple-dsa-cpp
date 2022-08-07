@@ -64,7 +64,7 @@ namespace SimpleDSA
         cache = cache->next;
         if (cache->key() == pair.key())
         {
-          throw invalid_argument("Cannot insert duplicate pair into IntHashSet");
+          throw invalid_argument("Cannot insert duplicate key into IntHashSet");
         }
       }
       cache->next = &pair;
