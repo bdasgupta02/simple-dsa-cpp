@@ -2,7 +2,9 @@
 #define BST_H
 #include <iostream>
 #include <string>
+#include <stdexcept>
 #include "BinaryTreeNode.h"
+#define invalid_argument std::invalid_argument
 
 namespace SimpleDSA
 {
@@ -31,7 +33,19 @@ namespace SimpleDSA
         else
           addRecursive(node->left, newNode);
       }
-      return;
+    }
+
+    T &searchRecursive(BinaryTreeNode<T> *node, T &t)
+    {
+      if (node == nullptr)
+        throw invalid_argument("Cannot find node in BST");
+      else if (t == node->val)
+        return t;
+
+      if (t > node->val)
+        return searchRecursive(node->right, t);
+      else
+        return searchRecursive(node->left, t);
     }
 
   public:
@@ -53,9 +67,10 @@ namespace SimpleDSA
       return head;
     }
 
-    // T &search(T &t)
-    // {
-    // }
+    T &search(T &t)
+    {
+      return searchRecursive(head, t);
+    }
 
     // T remove(T &t)
     // {
