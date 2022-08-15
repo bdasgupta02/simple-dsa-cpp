@@ -48,6 +48,29 @@ namespace SimpleDSA
         return searchRecursive(node->left, t);
     }
 
+// TODO: connect and rebalance
+    BinaryTreeNode<T> *removeRecursive(BinaryTreeNode<T> *node, T &t)
+    {
+      if (node == nullptr)
+        throw invalid_argument("Cannot find node in BST");
+
+      if (node->val == t)
+      {
+        BinaryTreeNode<T> toReturn = *node;
+        node = nullptr;
+        return &toReturn;
+      }
+
+      if (t > node->val)
+      {
+        return removeRecursive(node->right, t);
+      }
+      else 
+      {
+        return removeRecursive(node->left, t);
+      }
+    }
+
   public:
     BinaryTreeNode<T> *head;
 
@@ -72,9 +95,10 @@ namespace SimpleDSA
       return searchRecursive(head, t);
     }
 
-    // T remove(T &t)
-    // {
-    // }
+    BinaryTreeNode<T> *remove(T &t)
+    {
+      return removeRecursive(head, t);
+    }
   };
 }
 
