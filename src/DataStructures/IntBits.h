@@ -18,6 +18,7 @@ namespace SimpleDSA
     int clearBitAt(int i);
     int setBitAt(int i);
     int updateBitAt(int i, int &newBit);
+    int clearBitsAfter(int i);
   };
 
   IntBits::IntBits()
@@ -56,6 +57,13 @@ namespace SimpleDSA
     value |= mask;
     return value;
   }
+
+  int IntBits::clearBitsAfter(int i)
+  {
+    int mask = (~0) << i;
+    value &= mask;
+    return value;
+  } 
 }
 
 #endif
