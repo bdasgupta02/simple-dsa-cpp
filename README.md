@@ -6,9 +6,10 @@ A simple library for data structures and algorithms, written in C++.
 - ArrayList (dynamic Java-style list implementation)
 - Queue (FIFO, with 2 pointer implementation for speed at expense of memory and O(1) dequeue)
 - Stack
-- Int Hash Set
-- Hash Pair (pair data structured used for the hash map)
-- Hash Map (any hashable data type for key), with retrievals at O(1) for best and average, O(n) for worst
+- IntHashSet
+- HashPair (pair data structured used for the hash map)
+- HashMap (any hashable data type for key), with retrievals at O(1) for best and average, O(n) for worst
+- IntBits (simple bit manipulation for integers)
 
 ### Supported algorithms
 Nothing yet
