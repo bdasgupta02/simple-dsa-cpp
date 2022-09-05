@@ -1,5 +1,5 @@
-#ifndef DFSTree_H
-#define DFSTree_H
+#ifndef DFSBinaryTree_H
+#define DFSBinaryTree_H
 #include <src/DataStructures/BinaryTreeNode.h>
 
 namespace SimpleDSA {
