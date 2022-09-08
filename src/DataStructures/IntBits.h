@@ -10,7 +10,7 @@ namespace SimpleDSA
   class IntBits
   {
   public:
-    int value;
+    unsigned int value;
 
     IntBits();
     IntBits(int val);
@@ -19,6 +19,7 @@ namespace SimpleDSA
     int setBitAt(int i);
     int updateBitAt(int i, int &newBit);
     int clearBitsAfter(int i);
+    IntBits operator+(IntBits other);
   };
 
   IntBits::IntBits()
@@ -33,7 +34,9 @@ namespace SimpleDSA
 
   int IntBits::getBitAt(int i)
   {
-    return value & (1 << i) > 0 ? 1 : 0;
+    int mask = 1 << i;
+    int newVal = value & mask;
+    return newVal > 0 ? 1 : 0;
   }
 
   int IntBits::clearBitAt(int i)
@@ -64,6 +67,21 @@ namespace SimpleDSA
     value &= mask;
     return value;
   } 
+
+  IntBits IntBits::operator+(IntBits other)
+  {
+    unsigned int carry = value & other.value;
+    int res = value ^ other.value;
+
+    while (carry != 0)
+    {
+      unsigned int shifted_carry = carry << 1;
+      carry = res & shifted_carry;
+      res ^= shifted_carry;
+    }
+
+    return IntBits(res);
+  }
 }
 
 #endif
